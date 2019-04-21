@@ -69,7 +69,7 @@ City::~City()
 void City::setCityName()
 {
 	char cityName[30];
-	cout << "Enter City name -> ";
+	cout << " Enter City name -> ";
 	cin >> cityName;
 	delete[] this->name;
 	this->name = new char[strlen(cityName) + 1];
@@ -78,13 +78,19 @@ void City::setCityName()
 
 void City::setPopulation()
 {
-	cout << "\n Enter city population -> ";
-	cin >> this->population;
+	cout << " Enter city population -> ";
+	unsigned int ep;
+	cin >> ep;
+	while (ep <= 0 || ep > pow(10, 7) || ep)
+	{
+		cout << "Wrong input. Try again input only positiv number -> ";
+		cin >> ep;
+	}
 }
 
 void City::setCityFoundationYear()
 {
-	cout << "\n Enter the year of the city foundation -> ";
+	cout << " Enter the year of the city foundation -> ";
 	cin >> this->cityFoundationYear;
 }
 
@@ -118,10 +124,9 @@ ostream & operator<<(ostream & os, const City & obj)
 
 istream & operator>>(istream & is, City & obj)
 {
-	cout << "\nEnter City name: ";
-	char s[30];
-	cin >> s;
-	obj.name = new char[strlen(s) + 1];
-	strcpy_s(obj.name, strlen(s) + 1, s);
+	obj.setCityName();
+	obj.setCityFoundationYear();
+	obj.setPopulation();
+	cout << endl;
 	return is;
 }

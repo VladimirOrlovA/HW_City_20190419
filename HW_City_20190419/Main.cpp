@@ -4,14 +4,11 @@ void main()
 {
 	City a; //  ("Almaty", 1, 1);
 
-	cout << a;
+	/*cout << a << endl;
 	cin >> a;
-	cout << a;
+	cout << a << endl;*/
 
-	a.setCityName();
-	cout << a << endl;
-
-	cout << a.getName() << endl; /// ??????????????
+	a.setPopulation();
 
 	system("pause");
 }
